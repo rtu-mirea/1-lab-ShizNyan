@@ -13,7 +13,7 @@ public class Main {
         //final int min = 10;
         //final int max = 75;
 
-        int n;
+        int n, vbr;
         Scanner in = new Scanner (System.in);
         try
         {
@@ -22,8 +22,30 @@ public class Main {
             Array array = new Array(n);
             int arrnew, z = 0;
 
-            array.consolInput();
-            array.consolOutput();
+            System.out.println("Как вы хотите ввести массив?");
+            System.out.println("1 - вручную");
+            System.out.println("2 - рандомно");
+            vbr = in.nextInt();
+            switch (vbr)
+            {
+                case 1: array.consolInput();
+                    break;
+                case 2: array.randInput(10, 100);
+                    break;
+            }
+
+            System.out.println("Как вы хотите вывести массив на экран?");
+            System.out.println("1 - слева-направо");
+            System.out.println("2 - справа-налево");
+            vbr = in.nextInt();
+            switch (vbr)
+            {
+                case 1: array.consolOutput();
+                    break;
+                case 2: array.consolOutputperev();
+                    break;
+            }
+
 
             System.out.println("Введите число для поиска количества элементов массива больше заданного числа");
             int b = in.nextInt();

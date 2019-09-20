@@ -15,6 +15,11 @@ public class Array {
         x = new int [this.n];
     }
 
+    void randInput (int min, int max){//Метод получения псевдо случайного числа
+        for (int i = 0; i < n; i++){
+            x[i] = (int) (Math.random() * max) + min;
+        }
+    }
 
     void consolInput(){//Метод ввода в консоль
         System.out.println("Введите " + n + " Чисел");
@@ -25,8 +30,15 @@ public class Array {
     }
 
     void consolOutput(){
-        System.out.println("Массив чисел");
+        System.out.println("Массив чисел слева-направо");
         for (int i = 0; i < n; i++ ) {
+            System.out.println(" " + x[i]);
+        }
+    }
+
+    void consolOutputperev(){
+        System.out.println("Массив чисел справа-налево");
+        for (int i = n-1; i >= 0; i-- ) {
             System.out.println(" " + x[i]);
         }
     }
