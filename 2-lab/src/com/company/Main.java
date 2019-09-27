@@ -30,7 +30,7 @@ public class Main {
             {
                 case 1: array.consolInput();
                     break;
-                case 2: array.randInput(10, 100);
+                case 2: array.randInput(10, 1000);
                     break;
             }
 
@@ -56,12 +56,11 @@ public class Main {
             for(int i = 0; i < n; i++)
             {
                 arrnew = array.newarr(n, z);
+               // System.out.println(arrnew);
                 if (arrnew != 0)
                 {
                     System.out.println(arrnew);
-                    z+=2;
                 }
-                else z+=1;
 
             }
 
