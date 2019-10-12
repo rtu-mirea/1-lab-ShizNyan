@@ -20,7 +20,7 @@ public class Main {
             System.out.println("Введите количество элементов массива");
             n = in.nextInt();
             Array array = new Array(n);
-            int arrnew, z = 0;
+            int z = 0;
 
             System.out.println("Как вы хотите ввести массив?");
             System.out.println("1 - вручную");
@@ -53,13 +53,15 @@ public class Main {
             System.out.println("Количество элементов массива больших " + b + " = " + m);
 
             System.out.println("Новый массив, составленный из чисел основного массива, первая цифра которых меньше последней");
+            int[] newar = new int[n];
+
+            newar = array.newarr(n,z);
+
             for(int i = 0; i < n; i++)
             {
-                arrnew = array.newarr(n, z);
-               // System.out.println(arrnew);
-                if (arrnew != 0)
+                if (newar[i] != 0)
                 {
-                    System.out.println(arrnew);
+                    System.out.println(newar[i]);
                 }
 
             }

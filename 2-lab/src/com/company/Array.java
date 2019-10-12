@@ -9,6 +9,7 @@ public class Array {
     private int kolvo;
     private int perv, last, iznx = 0, k = 0;
 
+
     Array (int n) throws Exception{
         if (n<=0) throw new Exception(new String("Количество элементов <=0"));
         this.n = n;
@@ -50,7 +51,8 @@ public class Array {
         return kolvo;
     }
 
-    int newarr(int a, int z){
+    int[] newarr(int a, int z){
+        int [] x1 = new int[a];
         for (int i = z; i < a; i++)
         {
             iznx = x[i];
@@ -60,7 +62,8 @@ public class Array {
                 if (x[i]<10) perv = x[i]%10;
                 x[i]/=10;
             }
-            if (last>perv) return iznx;
+            if (last>perv) x1[i] = iznx;
+
             /*if ((x[i] > 9) & (x[i] < 100))
             {
                 last = x[i] % 10;
@@ -81,7 +84,7 @@ public class Array {
                 }
             }*/
         }
-        return 0;
+        return x1;
     }
 }
 
