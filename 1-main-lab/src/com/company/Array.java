@@ -30,30 +30,32 @@ public class Array {
         }
     }
 
-    void consolOutput(){
+    void output(){
         System.out.println("Массив чисел слева-направо");
         for (int i = 0; i < n; i++ ) {
             System.out.println(" " + x[i]);
         }
     }
 
-    void consolOutputperev(){
+    void outputreverse(){
         System.out.println("Массив чисел справа-налево");
         for (int i = n-1; i >= 0; i-- ) {
             System.out.println(" " + x[i]);
         }
     }
 
-    int findKolvoNumber(int a){
+    int FirstTask(int a){
         for (int i = 0; i < n; i++){
             if(x[i] > a) kolvo = kolvo+1;
         }
         return kolvo;
     }
 
-    int[] newarr(int a, int z){
-        int [] x1 = new int[a];
-        for (int i = z; i < a; i++)
+    int[] SecondTask(){
+        int [] temp = new int[n];
+        int neededlength = 0;
+        int z = 0;
+        for (int i = 0; i < n; i++)
         {
             iznx = x[i];
             last = x[i]%10;
@@ -62,28 +64,19 @@ public class Array {
                 if (x[i]<10) perv = x[i]%10;
                 x[i]/=10;
             }
-            if (last>perv) x1[i] = iznx;
-
-            /*if ((x[i] > 9) & (x[i] < 100))
-            {
-                last = x[i] % 10;
-                perv = (x[i] - last) / 10;
-                if (last > perv)
-                {
-                    return x[i];
-                }
-            }
-            if ((x[i] > 99) & (x[i] < 1000))
-            {
-                last = x[i] % 10;
-                ser = x[i] %100;
-                perv = (x[i] - ser) / 100;
-                if (last > perv)
-                {
-                    return x[i];
-                }
-            }*/
+            if (last>perv) {temp[i] = iznx; neededlength++;}
         }
-        return x1;
+
+        int [] res = new int[neededlength];
+
+        for(int i = 0; i < n; i++)
+        {
+            if (temp[i] != 0)
+            {
+                res[z] = temp[i];
+                z++;
+            }
+        }
+        return res;
     }
 }

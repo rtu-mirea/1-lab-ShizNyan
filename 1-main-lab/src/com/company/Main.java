@@ -30,7 +30,7 @@ public class Main {
             {
                 case 1: array.consolInput();
                     break;
-                case 2: array.randInput(10, 1000);
+                case 2: array.randInput(1, 1000);
                     break;
             }
 
@@ -40,33 +40,29 @@ public class Main {
             vbr = in.nextInt();
             switch (vbr)
             {
-                case 1: array.consolOutput();
+                case 1: array.output();
                     break;
-                case 2: array.consolOutputperev();
+                case 2: array.outputreverse();
                     break;
             }
 
 
             System.out.println("Введите число для поиска количества элементов массива больше заданного числа");
             int b = in.nextInt();
-            int m = array.findKolvoNumber(b);
-            System.out.println("Количество элементов массива больших " + b + " = " + m);
+            int Kolvo = array.FirstTask(b);
+            System.out.println("Количество элементов массива больших " + b + " = " + Kolvo);
 
             System.out.println("Новый массив, составленный из чисел основного массива, первая цифра которых меньше последней");
-            int[] newar = new int[n];
+            int[] Task2 = new int[n];
 
-            newar = array.newarr(n,z);
+            Task2 = array.SecondTask();
 
-            for(int i = 0; i < n; i++)
+            for(int i = 0; i < Task2.length; i++)
             {
-                if (newar[i] != 0)
-                {
-                    System.out.println(newar[i]);
-                }
-
+                System.out.println(Task2[i]);
             }
 
-
+            in.close();
 
         }catch (Exception e){
             System.out.println(e.toString());
