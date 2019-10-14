@@ -10,8 +10,6 @@ public class Main {
     }
 
     private static void TestArray(){
-        //final int min = 10;
-        //final int max = 75;
 
         int n, vbr;
         Scanner in = new Scanner (System.in);
