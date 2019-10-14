@@ -51,9 +51,8 @@ public class Main {
             System.out.println("Количество элементов массива больших " + b + " = " + Kolvo);
 
             System.out.println("Новый массив, составленный из чисел основного массива, первая цифра которых меньше последней");
-            int[] Task2 = new int[n];
 
-            Task2 = array.SecondTask();
+            int[] Task2 = array.SecondTask();
 
             for(int i = 0; i < Task2.length; i++)
             {
