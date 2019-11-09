@@ -6,7 +6,7 @@ import java.lang.String;
 public class Num1 {
     String s = "";
 
-    public void createS(String s1){
+    public Num1(String s1){
         s = s1;
     }
 

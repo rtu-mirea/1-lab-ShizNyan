@@ -39,9 +39,8 @@ public class Main {
         System.out.println("Введите текст, состоящий из предложений, оканчивающихся на .!?");
         Scanner instr = new Scanner(System.in);
 
-        Num1 n1 = new Num1();
         String s = instr.nextLine();
-        n1.createS(s);
+        Num1 n1 = new Num1(s);
 
         System.out.println("Текст, разделённый на абзацы:");
         String z1 = "";
