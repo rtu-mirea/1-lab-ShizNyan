@@ -9,12 +9,18 @@ public class Num3 {
     Pattern p = Pattern.compile(regex);
     Pattern p2 = Pattern.compile(regex2);
 
-    public boolean match(String s){
+    String s = "";
+
+    public Num3(String s1){
+        s = s1;
+    }
+
+    public boolean match(){
         Matcher m = p.matcher(s);
         return m.find();
     }
 
-    public String change(String s){
+    public String change(){
         String news = "";
         Matcher m = p2.matcher(s);
         if(m.find()){

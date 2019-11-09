@@ -5,8 +5,13 @@ import java.lang.StringBuilder;
 import java.lang.StringBuffer;
 
 public class Num2 {
+    StringBuilder s = new StringBuilder();
 
-    public StringBuilder separate(StringBuilder s){ //делим текст на абзацы
+    public Num2(StringBuilder s1){
+        s = s1;
+    }
+
+    public StringBuilder separate(){ //делим текст на абзацы
         char [] symb = new char[s.length()];
         StringBuilder sepss = new StringBuilder();
         s.getChars(0,s.length(), symb, 0);
@@ -77,10 +82,39 @@ public class Num2 {
                     .append(" ");
             }
         }
-        return news;
+        char [] symb2 = new char[s.length()];
+        StringBuilder sepss = new StringBuilder();
+        news.getChars(0,s.length(), symb2, 0);
+
+        for (int i = 0; i<news.length(); i++){
+
+            if(symb2[i]=='!'){
+                sepss.append(symb2[i])
+                        .append("\n");
+                i++;
+            }
+            else if(symb2[i]=='?'){
+                sepss.append(symb2[i])
+                        .append("\n");
+                i++;
+            }
+            else if(symb2[i]=='.'){
+                sepss.append(symb2[i])
+                        .append("\n");
+                i++;
+            }
+            else if(symb2[i] == ' '){
+                sepss.append(" ");
+            }
+            else{
+                sepss.append(symb2[i]);
+            }
+        }
+
+        return sepss;
     }
 
-    public StringBuilder addstr(StringBuilder s)
+    public StringBuilder addstr()
     {
         int kolvo = 0;
         char [] symb = new char[s.length()];

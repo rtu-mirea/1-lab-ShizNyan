@@ -77,11 +77,11 @@ public class Main {
         System.out.println("Введите текст, состоящий из предложений, оканчивающихся на .!?");
         Scanner instr = new Scanner(System.in);
 
-        Num2 n2 = new Num2();
         StringBuilder s = new StringBuilder(instr.nextLine());
+        Num2 n2 = new Num2(s);
         System.out.println("Текст, разделённый на абзацы:");
         StringBuilder z1 = new StringBuilder();
-        z1 = n2.separate(s);
+        z1 = n2.separate();
         System.out.println(z1);
 
         System.out.println("Текст, разделённый на абзацы, с каждым первым и последним словом прописными буквами:");
@@ -89,12 +89,11 @@ public class Main {
         StringBuilder z21 = new StringBuilder();
         String ss = s.toString();
         z2 = n2.toUpperCase(ss);
-        z21 = n2.separate(z2);
-        System.out.println(z21);
+        System.out.println(z2);
 
         System.out.println("Текст вида 'Текст. Количество слов в предложении = кол-во слов.':");
         StringBuilder z4 = new StringBuilder();
-        z4 = n2.addstr(s);
+        z4 = n2.addstr();
         System.out.println(z4);
 
         instr.close();
@@ -103,21 +102,22 @@ public class Main {
     public static void Num3(){
         Scanner instr = new Scanner(System.in);
 
-        Num3 n3 = new Num3();
+
         System.out.println("Введите строку, состоящую из цифр (???)");
         String s = instr.nextLine();
-
+        Num3 n3 = new Num3(s);
 
         boolean match = false;
-        match = n3.match(s);
+        match = n3.match();
         if(match){
             System.out.println("Строка состоит из 2 одинаковых цифр.");
         }
         else{System.out.println("Строка не состоит из 2 одинаковых цифр.");}
 
         String txt = "12 text hello 123 55 66 kek no 90";
+        Num3 n31 = new Num3(txt);
         String res = "";
-        res = n3.change(txt);
+        res = n31.change();
         System.out.println("Текст с одинаковыми двузначными числами, заменёнными на '*'");
         System.out.println(res);
 
