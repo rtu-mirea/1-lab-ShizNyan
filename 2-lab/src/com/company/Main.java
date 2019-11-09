@@ -41,24 +41,24 @@ public class Main {
 
         Num1 n1 = new Num1();
         String s = instr.nextLine();
+        n1.createS(s);
+
         System.out.println("Текст, разделённый на абзацы:");
         String z1 = "";
-        z1 = n1.separate(s);
+        z1 = n1.separate();
         System.out.println(z1);
 
         System.out.println("Текст, разделённый на абзацы, с каждым первым и последним словом прописными буквами:");
         String z2 = "";
-        String z21 = "";
-        z2 = n1.toUpperCase(s);
-        z21 = n1.separate(z2);
-        System.out.println(z21);
+        z2 = n1.toUpperCase();
+        System.out.println(z2);
 
         System.out.println("Выберите абзац, количество слов с сочетанием букв 'ам' в котором хотите посчитать:");
         System.out.println(z1);
         int num = 0;
         num = instr.nextInt();
         int res = 0;
-        res = n1.Kolvo_sl(num, z1);
+        res = n1.Kolvo_sl(num);
         if (res == -1){
             System.out.println("В тексте нет такого абзаца!");
         }
@@ -68,7 +68,7 @@ public class Main {
 
         System.out.println("Текст вида 'Текст. Количество слов в предложении = кол-во слов.':");
         String z4 = "";
-        z4 = n1.addstr(s);
+        z4 = n1.addstr();
         System.out.println(z4);
 
         instr.close();
@@ -107,20 +107,19 @@ public class Main {
         Num3 n3 = new Num3();
         System.out.println("Введите строку, состоящую из цифр (???)");
         String s = instr.nextLine();
-        String regex = "^(\\d)\\1{1}$";
+
 
         boolean match = false;
-        match = n3.match(s, regex);
+        match = n3.match(s);
         if(match){
             System.out.println("Строка состоит из 2 одинаковых цифр.");
         }
         else{System.out.println("Строка не состоит из 2 одинаковых цифр.");}
 
         String txt = "12 text hello 123 55 66 kek no 90";
-        String regex2 = "(\\d)\\1{1}";
         String res = "";
-        res = n3.change(txt, regex2);
-        System.out.println("Текст с двузначными числами, заменёнными на '*'");
+        res = n3.change(txt);
+        System.out.println("Текст с одинаковыми двузначными числами, заменёнными на '*'");
         System.out.println(res);
 
         instr.close();

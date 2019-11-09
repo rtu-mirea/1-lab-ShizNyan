@@ -4,8 +4,13 @@ import java.io.*;
 import java.lang.String;
 
 public class Num1 {
+    String s = "";
 
-    public String separate(String s){ //делим текст на абзацы
+    public void createS(String s1){
+        s = s1;
+    }
+
+    public String separate(){ //делим текст на абзацы
         String[] substr;
         char[] symb;
         String sepss = "";
@@ -35,7 +40,7 @@ public class Num1 {
         return sepss;
     }
 
-    public String toUpperCase(String s){
+    public String toUpperCase(){
         String[] substr;
         char[] symb;
         String news = "";
@@ -72,10 +77,35 @@ public class Num1 {
                 news += substr[i]+" ";
             }
         }
-        return news;
+
+        String[] substr2;
+        char[] symb2;
+        String sepss = "";
+        substr2 = news.split(del);
+
+        for (int i = 0; i<substr2.length; i++){
+            symb2 = substr2[i].toCharArray();
+            if(symb2[symb2.length-1]=='!'){
+                sepss += substr2[i];
+                sepss += "\n";
+            }
+            else if(symb2[symb2.length-1]=='?'){
+                sepss += substr2[i];
+                sepss += "\n";
+            }
+            else if(symb2[symb2.length-1]=='.'){
+                sepss += substr2[i];
+                sepss += "\n";
+            }
+            else{
+                sepss += substr2[i] + " ";
+            }
+        }
+
+        return sepss;
     }
 
-    public int Kolvo_sl(int abz, String s)
+    public int Kolvo_sl(int abz)
     {
         int res = 0;
         String[] substr;
@@ -99,7 +129,7 @@ public class Num1 {
         return res;
     }
 
-    public String addstr(String s)
+    public String addstr()
     {
         int kolvo = 0;
         String[] substr;

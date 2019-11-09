@@ -4,22 +4,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Num3 {
+    String regex = "^(\\d)\\1{1}$";
+    String regex2 = "(\\d)\\1{1}";
+    Pattern p = Pattern.compile(regex);
+    Pattern p2 = Pattern.compile(regex2);
 
-    public boolean match(String s, String regex){
-        Pattern p = Pattern.compile(regex);
+    public boolean match(String s){
         Matcher m = p.matcher(s);
-        if(m.find()){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return m.find();
     }
 
-    public String change(String s, String regex){
+    public String change(String s){
         String news = "";
-        Pattern p = Pattern.compile(regex);
-        Matcher m = p.matcher(s);
+        Matcher m = p2.matcher(s);
         if(m.find()){
             news = m.replaceAll("*");
         }
