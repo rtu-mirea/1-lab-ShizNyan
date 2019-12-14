@@ -9,6 +9,9 @@ import java.awt.event.ActionListener;
 class Menu extends JFrame implements ActionListener {
 
     LoginWindow LW = new LoginWindow();
+    AddQ AQ = new AddQ();
+    Results Res = new Results();
+    TakeE Ex = new TakeE();
     Registr R = new Registr();
 
 

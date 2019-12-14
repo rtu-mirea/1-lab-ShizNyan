@@ -4,14 +4,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 
-class Results extends JFrame implements ActionListener {
+class Results extends JFrame implements ActionListener, Serializable {
 
     TakeE Ex = new TakeE();
+    LoginWindow LW = new LoginWindow();
 
     //Для того, чтобы впоследствии обращаться к содержимому текстовых полей, надо сделать их членами класса окна
     JButton cancel;
+    JButton save;
+    JButton load;
 
     Results() {
         super("Результаты");
@@ -19,13 +23,13 @@ class Results extends JFrame implements ActionListener {
 
         // Настраиваем первую горизонтальную панель (для ввода логина)
         Box box1 = Box.createHorizontalBox();
-        JLabel QLabel = new JLabel("Всего вопросов: " + Ex.q_count);
+        JLabel QLabel = new JLabel("Всего вопросов: " + LW.CurrU.qcount);
         box1.add(QLabel);
         box1.add(Box.createHorizontalStrut(6));
 
         // Настраиваем вторую горизонтальную панель (для ввода пароля)
         Box box2 = Box.createHorizontalBox();
-        JLabel AnswLabel = new JLabel("Правильных ответов: " + Ex.right_answ);
+        JLabel AnswLabel = new JLabel("Правильных ответов: " + LW.CurrU.rightansw);
         box2.add(AnswLabel);
         box2.add(Box.createHorizontalStrut(6));
 
@@ -35,16 +39,32 @@ class Results extends JFrame implements ActionListener {
         box3.add(cancel);
         box3.add(Box.createHorizontalStrut(12));
 
+        Box box4 = Box.createHorizontalBox();
+        save = new JButton("Сохранить");
+        box4.add(save);
+        box4.add(Box.createHorizontalStrut(12));
+
+        Box box5 = Box.createHorizontalBox();
+        load = new JButton("Загрузить");
+        box5.add(load);
+        box5.add(Box.createHorizontalStrut(12));
+
         //Слушатели
         cancel.addActionListener(this);
+        save.addActionListener(this);
+        load.addActionListener(this);
 
         // Уточняем размеры компонентов loginLabel.setPreferredSize(passwordLabel.getPreferredSize());
         // Размещаем три горизонтальные панели на одной вертикальной
         Box mainBox = Box.createVerticalBox();
-        mainBox.setBorder(new EmptyBorder(12, 12, 12, 12));
+        mainBox.setBorder(new EmptyBorder(50, 50, 50, 50));
         mainBox.add(box1);
         mainBox.add(Box.createVerticalStrut(12));
         mainBox.add(box2);
+        mainBox.add(Box.createVerticalStrut(17));
+        mainBox.add(box4);
+        mainBox.add(Box.createVerticalStrut(17));
+        mainBox.add(box5);
         mainBox.add(Box.createVerticalStrut(17));
         mainBox.add(box3);
         setContentPane(mainBox);
@@ -58,6 +78,27 @@ class Results extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == cancel) {
             dispose();
+        }
+        if (e.getSource() == save) {
+            try {
+                Question RES = new Question(""+LW.CurrU.qcount, ""+LW.CurrU.rightansw);
+                FileOutputStream outputStream = new FileOutputStream("save.ser");
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+
+                // сохраняем игру в файл
+                objectOutputStream.writeObject(RES);
+
+                //закрываем поток и освобождаем ресурсы
+                objectOutputStream.close();
+            }
+            catch(IOException ex){
+
+            }
+
+        }
+        if (e.getSource() == load) {
+            new Load();
+
         }
     }
 }

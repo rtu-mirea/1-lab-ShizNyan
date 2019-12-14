@@ -20,4 +20,9 @@ public class Question {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return text+ " " + answer;
+    }
 }

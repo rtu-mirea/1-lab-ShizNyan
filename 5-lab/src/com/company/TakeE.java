@@ -9,9 +9,13 @@ import java.awt.event.ActionListener;
 class TakeE extends JFrame implements ActionListener {
 
     AddQ AQ = new AddQ();
+    LoginWindow LW = new LoginWindow();
     int index = 0;
-    public int right_answ = 0;
-    public int q_count = 0;
+    public int right_answ;
+    public int q_count;
+    Question[] Q1 = new Question[3];
+    Question q1 = new Question("Kek", "Kek");
+
 
     Registr R = new Registr();
     int NO=0;
@@ -27,11 +31,12 @@ class TakeE extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         System.out.println(AQ.indexQ);
+        Q1[0] = q1;
 
         // Настраиваем первую горизонтальную панель (для ввода логина)
         Box box1 = Box.createHorizontalBox();
         JLabel QLabel = new JLabel("Вопрос:");
-        JLabel QField = new JLabel(AQ.Questions[0].text);
+        JLabel QField = new JLabel(Q1[index].text);
         box1.add(QLabel);
         box1.add(Box.createHorizontalStrut(6));
         box1.add(QField);
@@ -75,12 +80,8 @@ class TakeE extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == ok) {
-            if (index<AQ.indexQ) {
-                if (AQ.Questions[index].isCorrect(AnswField.getText())) {
-                    right_answ++;
-                }
-                q_count++;
-                index++;
+            if (index<3) {
+                LW.CurrU.getAnswer(Q1[index], AnswField.getText());
             }
         }
         if (e.getSource() == cancel) {
